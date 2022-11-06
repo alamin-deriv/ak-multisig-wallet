@@ -10,13 +10,21 @@ const getWeb3 = () => {
             try {
                 await window.ethereum.enable()
                 resolve(web3)
+                
             } catch (error) {
+              
                 reject(error)
+                window.alert(
+                  "Non-Ethereum browser detected. You should consider trying MetaMask!"
+                );
             }
           } else if(window.web3) {
             resolve(window.web3)
           } else {
             reject('Must install Metamask')
+            window.alert(
+              "Non-Ethereum browser detected. You should consider trying MetaMask!"
+            );
           }
         })
     })
